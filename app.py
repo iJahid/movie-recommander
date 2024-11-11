@@ -4,7 +4,7 @@ import requests
 
 import pickle
 
-similarmovie=pickle.load(open('similarity.pkl','rb'))
+similarmovie=pickle.load(open('similarity_sm.pkl','rb'))
 API_KEY='538e4e8a58b198a88a2bd6bb065ab261'
 poster_path='https://image.tmdb.org/t/p/w200/'
 url='https://api.themoviedb.org/3/movie/'
