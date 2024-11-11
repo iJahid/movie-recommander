@@ -41,7 +41,7 @@ if(moviename):
         for index, row in m.iterrows():
             if  row["vote_average"]>5:
                 
-                strHeader=f'{row["title"]}({row["vote_average"]})'
+                strHeader=f'{row["title"]} ({row["vote_average"]})'
                 # strHeader=  f'<div style="vertical-alignment:top;max-height:40px;font-size: 15px;font-weight:600"><span style="width:30px;font-size:12px;padding:3px;text-align:center;border:1px solid;border-radius:50px;margin-top:-30px;"> {row["vote_average"]}</span>&nbsp;{row["title"]}</div>'
                 
                 poster=fetchPoster(row['id'])
@@ -85,7 +85,8 @@ if firstmovieid>-1:
     # st.write(iloc)
      
     movievector=similarmovie[iloc]
-    matched=sorted(list(enumerate( movievector)),reverse=True,key=lambda x:x[1])[1:6]
+    # matched=sorted(list(enumerate( movievector)),reverse=True,key=lambda x:x[1])[1:6]
+    matched=sorted(movievector,reverse=True,key=lambda x:x[1])[1:6]
     st.html("<b>Recomanded for You:<b>")
     cols = st.columns(5)
     icol=0
@@ -94,7 +95,7 @@ if firstmovieid>-1:
         if(c.vote_average.astype(float)>5):
              with cols[icol]:
                 poster=fetchPoster(c.id)
-                st.write(f'{c.title} {c.vote_average}'  )
+                st.write(f'{c.title}  | {c.vote_average}'  )
                 st.image(poster)
                 icol=icol+1
                 if icol>=5:
